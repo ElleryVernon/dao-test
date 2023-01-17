@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import * as KlipAPI from "../utils/klip";
 import { useEffect } from "react";
 
-export default function Login() {
+const Login = () => {
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [address, setAdress] = useState<string | null>(null);
@@ -77,4 +77,5 @@ export default function Login() {
 			</main>
 		</div>
 	);
-}
+};
+export default Login;
