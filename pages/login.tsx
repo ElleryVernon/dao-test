@@ -21,7 +21,7 @@ const Login = () => {
 		router.reload();
 	};
 	const kaikasLogIn = async () => {
-		if (window?.klaytn?.isKaikas) {
+		if (!window?.klaytn?.isKaikas) {
 			router.push("https://chrome.google.com/webstore/detail/kaikas/jblndlipeogpafnldhgmapagcccfchpi");
 		}
 		if (window?.klaytn?.isKaikas && !address?.length) {
