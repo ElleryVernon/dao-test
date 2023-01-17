@@ -3,7 +3,7 @@ import { Header } from "../components";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-export default function Home() {
+export default function Mint() {
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [address, setAdress] = useState<string | null>(null);
