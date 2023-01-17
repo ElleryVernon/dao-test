@@ -7,7 +7,7 @@ const getAdderess = async (setQrvalue: Dispatch<SetStateAction<string>>, logIn: 
 	try {
 		const { data } = await axios.post("https://a2a-api.klipwallet.com/v2/a2a/prepare", {
 			bapp: {
-				name: "Pintotalk",
+				name: "CZERO DAO",
 			},
 			type: "auth",
 		});
@@ -34,7 +34,7 @@ const setCount = async (count: number, setQrvalue: Dispatch<SetStateAction<strin
 	try {
 		const { data } = await axios.post("https://a2a-api.klipwallet.com/v2/a2a/prepare", {
 			bapp: {
-				name: "Pintotalk",
+				name: "CZERO DAO",
 				callback: {},
 			},
 			type: "execute_contract",
