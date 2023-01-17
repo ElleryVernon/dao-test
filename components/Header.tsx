@@ -24,7 +24,7 @@ const Header = () => {
 				</div>
 			</Link>
 			<div className="flex space-x-2 items-center">
-				<Link href="https://landing.pintotalk.io/" legacyBehavior passHref>
+				<Link href="/mint" legacyBehavior passHref>
 					<a target="_blank">
 						<button className="px-2 h-12 w-16 bg-blue-400 hover:bg-blue-300 font-semibold text-white rounded-xl text-xs">
 							MINT
