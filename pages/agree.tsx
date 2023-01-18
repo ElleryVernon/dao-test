@@ -30,7 +30,7 @@ const Mint = () => {
 		async function findUser(address: string) {
 			const { data } = await axios.get(`/api/user?address=${address}`);
 			if (data?.user?.id?.length) {
-				return router.replace("/gallary");
+				return router.replace("/");
 			}
 			setIsLoading(false);
 		}
