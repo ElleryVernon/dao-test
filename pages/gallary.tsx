@@ -50,10 +50,24 @@ export default function Home() {
 					<div className="w-[300px] h-[420px] bg-transparent cursor-pointer group perspective mx-4">
 						<div className="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
 							<div className="absolute backface-hidden border-2 w-full h-full border-gray-300 rounded">
-								<Image src={`/nft/${index}.png`} className="w-full h-full" alt="nft image" width={300} height={420} />
+								<Image
+									src={`/nft/${index}.png`}
+									className="w-full h-full"
+									alt="nft image"
+									width={300}
+									height={420}
+									quality={60}
+								/>
 							</div>
 							<div className="absolute my-rotate-y-180  w-full h-full bg-gray-100 backface-hidden">
-								<Image src={`/nft/${index}-1.png`} className="w-full h-full" alt="nft image" width={300} height={420} />
+								<Image
+									src={`/nft/${index}-1.png`}
+									className="w-full h-full"
+									alt="nft image"
+									width={300}
+									height={420}
+									quality={60}
+								/>
 							</div>
 						</div>
 					</div>
@@ -73,7 +87,7 @@ export default function Home() {
 					<p className="text-center mt-12 text-gray-400 font-semibold">발행(판매) 수량</p>
 					<p className="text-center mt-2 text-gray-900 font-semibold text-3xl">1,000 EA</p>
 				</div>
-				<div className="mx-auto border px-16 py-4 font-semibold text-white bg-blue-500 rounded-md w-[460px] mt-12 text-center">
+				<div className="mx-auto border px-16 py-4 font-semibold text-white bg-blue-500 rounded-md w-[460px] mt-12 text-center cursor-pointer hover:bg-blue-400 active:bg-blue-600">
 					현재 NFT 구매
 				</div>
 			</section>
