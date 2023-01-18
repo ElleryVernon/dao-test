@@ -13,6 +13,7 @@ const Header = () => {
 	}, []);
 	const logOut = () => {
 		sessionStorage.removeItem("address");
+		sessionStorage.removeItem("wallet");
 		router.reload();
 	};
 
@@ -24,12 +25,10 @@ const Header = () => {
 				</div>
 			</Link>
 			<div className="flex space-x-2 items-center">
-				<Link href="/mint" legacyBehavior passHref>
-					<a target="_blank">
-						<button className="px-2 h-12 w-16 bg-blue-400 hover:bg-blue-300 font-semibold text-white rounded-xl text-xs">
-							MINT
-						</button>
-					</a>
+				<Link href="/mint">
+					<button className="px-2 h-12 w-16 bg-blue-400 hover:bg-blue-300 font-semibold text-white rounded-xl text-xs">
+						MINT
+					</button>
 				</Link>
 				{address?.length ? (
 					<button

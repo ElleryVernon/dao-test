@@ -22,7 +22,7 @@ const getAdderess = async (setQrvalue: Dispatch<SetStateAction<string>>, logIn: 
 				logIn(res.data.result.klaytn_address);
 				clearInterval(timerId);
 			}
-		}, 1500);
+		}, 1600);
 	} catch (err) {
 		console.error(err);
 		typeof window !== "undefined" && sessionStorage.clear();
@@ -30,7 +30,7 @@ const getAdderess = async (setQrvalue: Dispatch<SetStateAction<string>>, logIn: 
 	}
 };
 
-const setCount = async (count: number, setQrvalue: Dispatch<SetStateAction<string>>) => {
+const transaction = async (count: number, setQrvalue: Dispatch<SetStateAction<string>>) => {
 	try {
 		const { data } = await axios.post("https://a2a-api.klipwallet.com/v2/a2a/prepare", {
 			bapp: {
@@ -62,4 +62,4 @@ const setCount = async (count: number, setQrvalue: Dispatch<SetStateAction<strin
 	}
 };
 
-export { getAdderess, setCount };
+export { getAdderess, transaction };
