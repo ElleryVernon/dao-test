@@ -36,10 +36,11 @@ export default function Home() {
 	}
 
 	return (
-		<>
+		<div className="flex-row items-center justify-center">
 			<Header />
-			<section className="h-screen flex justify-center gap-x-16 text-gray-800 m-auto mt-16">
-				<div className="h-[420px] flex items-center">
+			<h1 className="text-center text-2xl mt-10 font-bold text-gray-800">NFT 갤러리</h1>
+			<section className="flex-row justify-center gap-x-16 text-gray-800 m-auto mt-10">
+				<div className="h-[420px] flex items-center justify-center m-auto">
 					<button
 						className="text-gray-700 border px-4 py-2 rounded-md hover:bg-gray-200 transition active:bg-gray-400"
 						onClick={decreaseIdx}
@@ -63,7 +64,19 @@ export default function Home() {
 						다음
 					</button>
 				</div>
+				<p className="text-center mt-4 font-semibold text-gray-600">{`${index}/10`}</p>
+				<div className="border py-14 rounded-md w-[460px] m-auto mt-10">
+					<p className="text-center text-gray-400 font-semibold">현재 민팅 모집 금액</p>
+					<p className="text-center mt-2 text-gray-900 font-semibold text-3xl">1,500,000,000</p>
+					<p className="text-center mt-12 text-gray-400 font-semibold">판매용량</p>
+					<p className="text-center mt-2 text-gray-900 font-semibold text-3xl">0.7MWP</p>
+					<p className="text-center mt-12 text-gray-400 font-semibold">발행(판매) 수량</p>
+					<p className="text-center mt-2 text-gray-900 font-semibold text-3xl">1,000 EA</p>
+				</div>
+				<div className="mx-auto border px-16 py-4 font-semibold text-white bg-blue-500 rounded-md w-[460px] mt-12 text-center">
+					현재 NFT 구매
+				</div>
 			</section>
-		</>
+		</div>
 	);
 }
