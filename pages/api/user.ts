@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 				});
 				res.status(200).json({ success: true, user: user });
 			} catch (error) {
-				res.status(400).json({ success: false });
+				res.status(400).json({ success: false, error: error });
 			}
 			break;
 		case "POST":
@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 					id: address as string,
 				},
 			});
-			if (user?.id.length) return res.status(400).json({ success: true });
+			if (user?.id.length) return res.status(400).json({ success: false });
 			try {
 				const user = await prisma.user.create({
 					data: {
