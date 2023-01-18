@@ -17,17 +17,21 @@ const Header = () => {
 		router.reload();
 	};
 
+	if (isLoading) {
+		return <></>;
+	}
+
 	return (
-        <header className="sticky top-0 z-50 flex bg-white py-2 shadow-sm justify-between px-4 lg:px-12">
+		<header className="sticky top-0 z-50 flex bg-white py-2 shadow-sm justify-between px-4 lg:px-12">
 			<Link href="/" legacyBehavior>
 				<div className="flex flex-shrink-1 cursor-pointer items-start justify-start my-3 text-xl font-semibold hover:bg-gray-200 px-4 py-2 rounded-sm trasnition">
 					CZERO DAO
 				</div>
 			</Link>
 			<div className="flex space-x-2 items-center">
-				<Link href="/mint" legacyBehavior>
+				<Link href="/gallary" legacyBehavior>
 					<button className="px-2 h-12 w-16 bg-blue-400 hover:bg-blue-300 font-semibold text-white rounded-xl text-xs">
-						MINT
+						갤러리
 					</button>
 				</Link>
 				{address?.length ? (
@@ -51,7 +55,7 @@ const Header = () => {
 				)}
 			</div>
 		</header>
-    );
+	);
 };
 
 export default Header;

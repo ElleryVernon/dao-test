@@ -3,6 +3,7 @@ import { Header } from "../components";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Link from "next/link";
+import axios from "axios";
 
 const Mint = () => {
 	const router = useRouter();
@@ -24,9 +25,24 @@ const Mint = () => {
 	};
 
 	useEffect(() => {
-		setAdress(sessionStorage.getItem("address"));
-		setIsLoading(false);
+		const wallet = sessionStorage.getItem("address");
+		async function findUser(address: string) {
+			const { data } = await axios.get(`/api/user?address=${address}`);
+			if (data?.user?.id?.length) {
+				return router.replace("/mint");
+			}
+			setIsLoading(false);
+		}
+		if (wallet?.length) {
+			findUser(wallet);
+			setAdress(wallet);
+		}
 	}, []);
+
+	const createUser = async () => {
+		await axios.post(`/api/user?address=${address}`, { address: address as string });
+		router.reload();
+	};
 
 	if (isLoading) {
 		return <></>;
@@ -297,6 +313,7 @@ const Mint = () => {
 					className={`w-[436px] ${
 						checkAll ? "bg-blue-500 hover:bg-blue-400 active:bg-blue-600 transition" : "bg-blue-300"
 					} py-3 border text-white rounded-md text-semibold`}
+					onClick={createUser}
 					disabled={!checkAll}
 				>
 					{checkAll ? "제출하기" : "전체 동의 필요"}
