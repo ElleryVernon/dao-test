@@ -56,7 +56,9 @@ const Mint = () => {
 				<div className="border text-start py-4 px-4 text-xs rounded-sm border-gray-300 w-[436px] m-auto">
 					<p>1. 기후 위기에 대한 문제 의식에 공감하는 에코 시민​</p>
 					<p>2. CZero DAO 참여 후 공동 행동을 통해 실질적인 탄소 감축에 기여하기를 희망하는 사람​</p>
-					<p>3. CZero DAO 커뮤니티 멤버 (https://t.me/czero_finance_kr)​</p>
+					<Link href="https://t.me/czero_finance_kr" passHref target="_blank" rel="noopener noreferrer">
+						<p className="underline">3. CZero DAO 커뮤니티 멤버 (https://t.me/czero_finance_kr)​</p>
+					</Link>
 					<p>4. CZero Docs 확인(읽기) 완료자</p>
 				</div>
 				<div className="flex items-center mb-4 w-[434px] mx-auto justify-end">
@@ -127,23 +129,53 @@ const Mint = () => {
 					<p>
 						- 소나무(평균) 1그루의 연간 CO2 흡수량: 2.35kg - 「주요 산림수종의 표준 탄소흡수량(2013)」, 국립산림과학원
 					</p>
-					<p className="font-semibold text-gray-800">지원 예정 발전소 정보 확인 : https://www.czero.team</p>
+					<Link
+						href="https://www.czero.team/6fb46bf7-38d4-4e7a-b628-9742df78d7b5"
+						passHref
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<p className="font-semibold text-gray-800 underline mt-4">
+							지원 예정 발전소 정보 확인 : https://www.czero.team
+						</p>
+					</Link>
 					<div className="text-center flex justify-center space-x-2">
-						<div className="border px-4 py-2 rounded border-gray-300">
-							<p>우곡리 태양광 발전소</p>
-							<p>795kWp</p>
-							<p className="font-bold">바로가기</p>
-						</div>
-						<div className="border px-4 py-2 rounded border-gray-300">
-							<p>봉성리 태양광 발전소</p>
-							<p>500kWp</p>
-							<p className="font-bold">바로가기</p>
-						</div>
-						<div className="border px-4 py-2 rounded border-gray-300">
-							<p>개발 협약서</p>
-							<p>3,705kWp</p>
-							<p className="font-bold">바로가기</p>
-						</div>
+						<Link
+							href="https://f5015c78-b318-4117-abb1-1c8563f2da3f.filesusr.com/ugd/84e6ae_5853036ea4d6402fb47089d2a3a38fbe.pdf"
+							passHref
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<div className="border px-4 py-2 rounded border-gray-300">
+								<p>우곡리 태양광 발전소</p>
+								<p>795kWp</p>
+								<p className="font-bold">바로가기</p>
+							</div>
+						</Link>
+						<Link
+							href="https://f5015c78-b318-4117-abb1-1c8563f2da3f.filesusr.com/ugd/84e6ae_164b00946ee14495bffbac42b3f102ae.pdf"
+							passHref
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<div className="border px-4 py-2 rounded border-gray-300">
+								<p>봉성리 태양광 발전소</p>
+								<p>500kWp</p>
+								<p className="font-bold">바로가기</p>
+							</div>
+						</Link>
+						<Link
+							href="https://f5015c78-b318-4117-abb1-1c8563f2da3f.filesusr.com/ugd/84e6ae_b819a930c7724f5294ba6d3b55e990aa.pdf"
+							passHref
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<div className="border px-4 py-2 rounded border-gray-300">
+								<p>개발 협약서</p>
+								<p>3,705kWp</p>
+								<p className="font-bold">바로가기</p>
+							</div>
+						</Link>
 					</div>
 				</div>
 				<div className="flex items-center mb-4 w-[434px] mx-auto justify-end">
@@ -171,11 +203,18 @@ const Mint = () => {
 						<p>- 자본금 : 1억원</p>
 						<p>- 자산 규모 : 17억원</p>
 					</div>
-					<div className="border px-4 py-2 rounded border-gray-300 mx-2 text-center">
-						<p>디폴트컨트랙터</p>
-						<p>​재무건전성 자료</p>
-						<p className="font-bold">바로가기</p>
-					</div>
+					<Link
+						href="https://f5015c78-b318-4117-abb1-1c8563f2da3f.filesusr.com/ugd/84e6ae_ff5032ff5bda40bab3edf5beeda26623.pdf"
+						passHref
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<div className="border px-4 py-2 rounded border-gray-300 mx-2 text-center mt-4">
+							<p>디폴트컨트랙터</p>
+							<p>​재무건전성 자료</p>
+							<p className="font-bold">바로가기</p>
+						</div>
+					</Link>
 				</div>
 				<div className="flex items-center mb-4 w-[434px] mx-auto justify-end">
 					<input

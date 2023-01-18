@@ -1,7 +1,7 @@
 import Caver, { AbiItem, HttpProviderOptions } from "caver-js";
 import ABI from "./abi.json";
 
-const CHAIN_ID = 8217; // 1001
+const CHAIN_ID = 1001; // 8217
 const KEY = process.env.ACCESS_KEY + ":" + process.env.SECRET_KEY;
 const option = {
 	headers: [
