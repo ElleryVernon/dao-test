@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import * as KlipAPI from "../utils/klip";
 import { useEffect } from "react";
+import { NewtonsCradle } from "@uiball/loaders";
 
 const Login = () => {
 	const router = useRouter();
@@ -43,7 +44,11 @@ const Login = () => {
 	}
 
 	if (isLoading) {
-		return <></>;
+		return (
+			<div className="flex w-full items-center justify-center p-10 text-xl">
+				<NewtonsCradle size={50} color="#3B82F6" />
+			</div>
+		);
 	}
 
 	return (

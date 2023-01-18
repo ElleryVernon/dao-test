@@ -29,7 +29,7 @@ const Header = () => {
 				</div>
 			</Link>
 			<div className="flex space-x-2 items-center">
-				<Link href="/gallary" legacyBehavior>
+				<Link href="/" legacyBehavior>
 					<button className="px-2 h-12 w-16 bg-blue-400 hover:bg-blue-300 font-semibold text-white rounded-xl text-xs">
 						갤러리
 					</button>

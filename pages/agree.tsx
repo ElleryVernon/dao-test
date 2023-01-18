@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { NewtonsCradle } from "@uiball/loaders";
 
 const Mint = () => {
 	const router = useRouter();
@@ -29,7 +30,7 @@ const Mint = () => {
 		async function findUser(address: string) {
 			const { data } = await axios.get(`/api/user?address=${address}`);
 			if (data?.user?.id?.length) {
-				return router.replace("/mint");
+				return router.replace("/gallary");
 			}
 			setIsLoading(false);
 		}
@@ -45,7 +46,14 @@ const Mint = () => {
 	};
 
 	if (isLoading) {
-		return <></>;
+		return (
+			<>
+				<Header />
+				<div className="flex w-full items-center justify-center p-10 text-xl">
+					<NewtonsCradle size={50} color="#3B82F6" />
+				</div>
+			</>
+		);
 	}
 
 	if (!address) {
@@ -54,7 +62,6 @@ const Mint = () => {
 
 	return (
 		<div className="mb-16">
-			<Header />
 			<main className="flex-row items-center justify-center space-y-4 text-center w-full content-center">
 				<h1 className="text-xl font-bold text-gray-800 mt-8">DAO 거버넌스 설립 전 투표 및 동의</h1>
 				<h2 className="text-md text-gray-800">의제</h2>

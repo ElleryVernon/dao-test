@@ -1,0 +1,6 @@
+[
+	{ "name": "100wp", "pricing": 230000, "discount": 5, "reward": 50000 },
+	{ "name": "1,000wp(1kWp)", "pricing": 2300000, "discount": 10, "reward": 500000 },
+	{ "name": "10,000wp(10kWp)", "pricing": 23000000, "discount": 15, "reward": 5000000 },
+	{ "name": "100,000wp(100kWp)", "pricing": 230000000, "discount": 20, "reward": 50000000 }
+]
