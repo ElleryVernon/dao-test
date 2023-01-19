@@ -75,6 +75,8 @@ const Mint = () => {
 		const volume = PRICE[pricing].name;
 
 		if (wallet === "kaikas") {
+			const networkVersion = await window.klaytn.networkVersion;
+			if (networkVersion !== 8217) return;
 			const result = await window.caver.klay
 				.sendTransaction({
 					type: "VALUE_TRANSFER",
