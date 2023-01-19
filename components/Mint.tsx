@@ -80,7 +80,7 @@ const Mint = () => {
 					type: "VALUE_TRANSFER",
 					from: address,
 					to: "0x353EF2E80D0E2fde7F1561f8F8bBe21fB0B7F6F2",
-					value: window.caver.utils.toPeb(`${0.01}`, "KLAY"), // 1 클레이 전송
+					value: window.caver.utils.toPeb(`${price}`, "KLAY"), // 1 클레이 전송
 					gas: 8000000,
 				})
 				.catch((err: Error) => console.log(err));
@@ -109,7 +109,7 @@ const Mint = () => {
 					transaction: {
 						from: address,
 						to: "0x353EF2E80D0E2fde7F1561f8F8bBe21fB0B7F6F2",
-						amount: `0.01`,
+						amount: `${price}`,
 					},
 				});
 
