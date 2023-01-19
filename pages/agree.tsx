@@ -6,7 +6,7 @@ import Link from "next/link";
 import axios from "axios";
 import { NewtonsCradle } from "@uiball/loaders";
 
-const Mint = () => {
+const Agree = () => {
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [address, setAdress] = useState<string | null>(null);
@@ -330,4 +330,4 @@ const Mint = () => {
 	);
 };
 
-export default Mint;
+export default Agree;

@@ -14,4 +14,20 @@ model User {
   id         String   @id @default(cuid())
   agree      Boolean  @default(true)
   created_at DateTime
+  orders     Order[]
+}
+
+model Order {
+  id           String   @id @default(cuid())
+  User         User     @relation(fields: [userId], references: [id])
+  userId       String
+  NFT_id       String
+  NFT_name     String
+  Volume       String
+  price        String
+  discount     String
+  actual_price String
+  reward       String
+  klaytn       String
+  created_at   DateTime
 }

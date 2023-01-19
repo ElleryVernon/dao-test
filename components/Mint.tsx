@@ -13,6 +13,7 @@ const Mint = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [address, setAdress] = useState<string | null>(null);
 	const [wallet, setWallet] = useState<string | null>(null);
+	const [qrvalue, setQrvalue] = useState<string>("");
 	const [klay, setKlay] = useState<number>(0);
 	const [pricing, setPricing] = useState<number>(-1);
 	const { nftId } = router.query;
@@ -65,19 +66,78 @@ const Mint = () => {
 
 	const mint = async () => {
 		if (pricing === -1) return;
+		const prevPrice = PRICE[pricing].pricing;
+		const discount = (prevPrice / 100) * PRICE[pricing].discount;
+		const reward = PRICE[pricing].reward;
+		const priceKRW = prevPrice - discount;
+		const price = Math.floor(priceKRW / klay);
+		const NFTName = NFT[Number(nftId)].name;
+		const volume = PRICE[pricing].name;
+
 		if (wallet === "kaikas") {
-			window.caver.klay
+			const result = await window.caver.klay
 				.sendTransaction({
 					type: "VALUE_TRANSFER",
 					from: address,
 					to: "0x353EF2E80D0E2fde7F1561f8F8bBe21fB0B7F6F2",
-					value: window.caver.utils.toPeb("1", "KLAY"), // 1 클레이 전송
+					value: window.caver.utils.toPeb(`${0.01}`, "KLAY"), // 1 클레이 전송
 					gas: 8000000,
 				})
-				.once("error", (err: string) => {
-					return router.reload();
+				.catch((err: Error) => console.log(err));
+
+			if (!result) {
+				router.reload();
+			} else {
+				await axios.post("/api/order", {
+					userId: address,
+					NFT_id: nftId,
+					NFT_name: NFTName,
+					Volume: volume,
+					price: prevPrice,
+					discount: discount,
+					actual_price: priceKRW,
+					reward: reward,
+					klaytn: price,
 				});
+				router.push("/");
+			}
 		} else if (wallet === "klip") {
+			try {
+				const { data } = await axios.post("https://a2a-api.klipwallet.com/v2/a2a/prepare", {
+					bapp: { name: "My BApp" },
+					type: "send_klay",
+					transaction: {
+						from: address,
+						to: "0x353EF2E80D0E2fde7F1561f8F8bBe21fB0B7F6F2",
+						amount: `0.01`,
+					},
+				});
+
+				const { request_key } = data;
+				const qrcode = `https://klipwallet.com/?target=/a2a?request_key=${request_key}`;
+				setQrvalue(qrcode);
+
+				const timerId = setInterval(async () => {
+					const res = await axios.get(`https://a2a-api.klipwallet.com/v2/a2a/result?request_key=${request_key}`);
+					if (res.data.result?.status == "success") {
+						clearInterval(timerId);
+						await axios.post("/api/order", {
+							userId: address,
+							NFT_id: nftId,
+							NFT_name: NFTName,
+							Volume: volume,
+							price: prevPrice,
+							discount: discount,
+							actual_price: priceKRW,
+							reward: reward,
+							klaytn: price,
+						});
+						router.push("/");
+					}
+				}, 1600);
+			} catch (err) {
+				router.reload();
+			}
 		}
 	};
 
@@ -169,14 +229,29 @@ const Mint = () => {
 					</>
 				) : null}
 			</div>
-			<div
-				className={`mx-auto border px-16 py-4 font-semibold text-white rounded-md w-[460px] mt-12 text-center ${
-					pricing !== -1 ? "cursor-pointer hover:bg-blue-400 active:bg-blue-600 bg-blue-500 " : "bg-blue-200"
-				}`}
-				onClick={mint}
-			>
-				{pricing !== -1 ? "구매하기" : "용량을 선택해주세요"}
-			</div>
+			{qrvalue.length ? (
+				<Link href={qrvalue} passHref target="_blank" rel="noopener noreferrer">
+					<div
+						className={`mx-auto border px-16 py-4 font-semibold text-white rounded-md w-[460px] mt-12 text-center ${
+							pricing !== -1
+								? "cursor-pointer hover:bg-orange-400 active:bg-orange-600 bg-orange-500 "
+								: "bg-orange-200"
+						}`}
+						onClick={mint}
+					>
+						{pricing !== -1 ? "Klip으로 구매하기" : "용량을 선택해주세요"}
+					</div>
+				</Link>
+			) : (
+				<div
+					className={`mx-auto border px-16 py-4 font-semibold text-white rounded-md w-[460px] mt-12 text-center ${
+						pricing !== -1 ? "cursor-pointer hover:bg-blue-400 active:bg-blue-600 bg-blue-500 " : "bg-blue-200"
+					}`}
+					onClick={mint}
+				>
+					{pricing !== -1 ? "구매하기" : "용량을 선택해주세요"}
+				</div>
+			)}
 		</section>
 	);
 };
